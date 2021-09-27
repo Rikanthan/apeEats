@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/showOrders"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/orderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_04"
+            android:layout_marginLeft="130dp"
+            android:backgroundTint="@color/purple_500"/>
+        <ImageView
+            android:id="@+id/orderDelete"
+            android:layout_width="46dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/ic_delete"
+            android:layout_marginLeft="20dp"/>
+
+</LinearLayout>

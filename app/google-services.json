@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "264252969132",
+    "project_id": "newapeeats",
+    "storage_bucket": "newapeeats.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264252969132:android:58e3ed6b9e05cb55980f09",
+        "android_client_info": {
+          "package_name": "com.example.anushka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264252969132-s86jse23ohbvlrrruvs6qe2g51455qbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz_36QiVup2bm7cXj5ZzJz5MFmtD_oJIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264252969132-s86jse23ohbvlrrruvs6qe2g51455qbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
