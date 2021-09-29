@@ -29,12 +29,13 @@ Orders orders;
     }
     public void add(View v)
     {
-        orders.setOrderName(ordername.getText().toString().trim());
-        orders.setOrderNo(orderno.getText().toString().trim());
+        orders.setOrderName("Kothu");
+        orders.setOrderNo("5");
         orders.setStatus("pending");
         orders.setCustomerAddress("Colombo");
         orders.setCustomerName("Anushka");
         orders.setCustomerPhone("0735435705");
+        orders.setFoodImageUrl("https://media.istockphoto.com/photos/sri-lanka-traditional-street-food-kothu-kottu-picture-id1150648881?s=612x612");
         databaseReference.child(orderno.getText().toString().trim()).setValue(orders);
     }
 }

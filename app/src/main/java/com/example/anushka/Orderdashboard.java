@@ -87,4 +87,10 @@ public class Orderdashboard extends AppCompatActivity implements OrderDashboardH
         databaseReference.child(newOrders.getOrderNo()).removeValue();
         retrieve();
     }
+
+    public void deliveryStatus(View v)
+    {
+        Intent i = new Intent(Orderdashboard.this,Delivery.class);
+        startActivity(i);
+    }
 }
