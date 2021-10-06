@@ -50,10 +50,10 @@ public class FinishedOrders extends AppCompatActivity implements OrderHolder.OnI
                       Products orders = mydata.getValue(Products.class);
                         assert orders != null;
                         ordersList.add(orders);
-//                        if(orders.getpCatogory().contains("Yes"))
-//                        {
-//                            ordersList.add(orders);
-//                        }
+                        if(orders.getpCetogory().contains("Yes"))
+                        {
+                            ordersList.add(orders);
+                        }
                     }
                 }
                 orderHolder = new OrderHolder(FinishedOrders.this,ordersList);

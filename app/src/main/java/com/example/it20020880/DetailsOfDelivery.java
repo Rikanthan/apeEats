@@ -70,7 +70,7 @@ public class DetailsOfDelivery extends AppCompatActivity {
     {
         if(checkBox.isChecked())
         {
-            orders.setpCatogory("yes");
+            orders.setpCetogory("Yes");
             reference.child(orderNo).setValue(orders);
         }
         Intent intent = new Intent(DetailsOfDelivery.this,Delivery.class);

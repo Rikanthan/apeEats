@@ -1,8 +1,8 @@
 package com.example.it20020880;
 
 public class Products {
-    public Products(String pCatogory, String pDeliveryAvailable, String pDescription, String pFoodname, String pID, String pImage, String pPrice) {
-        this.pCatogory = pCatogory;
+    public Products(String pCetogory, String pDeliveryAvailable, String pDescription, String pFoodname, String pID, String pImage, String pPrice) {
+        this.pCetogory = pCetogory;
         this.pDeliveryAvailable = pDeliveryAvailable;
         this.pDescription = pDescription;
         this.pFoodname = pFoodname;
@@ -11,14 +11,14 @@ public class Products {
         this.pPrice = pPrice;
     }
 
-    String pCatogory;
+    String pCetogory;
 
-    public String getpCatogory() {
-        return pCatogory;
+    public String getpCetogory() {
+        return pCetogory;
     }
 
-    public void setpCatogory(String pCatogory) {
-        this.pCatogory = pCatogory;
+    public void setpCetogory(String pCetogory) {
+        this.pCetogory = pCetogory;
     }
 
     public String getpDeliveryAvailable() {

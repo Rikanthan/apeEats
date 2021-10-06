@@ -22,6 +22,7 @@ public class PendingOrders extends AppCompatActivity implements OrderHolder.OnIt
     LinearLayoutManager linearLayoutManager;
     List<Products> ordersList;
     OrderHolder orderHolder;
+    Products products;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class PendingOrders extends AppCompatActivity implements OrderHolder.OnIt
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         ordersList = new ArrayList<>();
+        products = new Products();
         retrieve();
 
     }
@@ -49,11 +51,11 @@ public class PendingOrders extends AppCompatActivity implements OrderHolder.OnIt
                 {
                     if(mydata.exists())
                     {
-                        Products orders = mydata.getValue(Products.class);
-//                        if(orders.getpCatogory().contains("pending"))
-//                        {
-//                            ordersList.add(orders);
-//                        }
+                        products = mydata.getValue(Products.class);
+                        if(products.getpCetogory().contains("No"))
+                        {
+                            ordersList.add(products);
+                        }
                     }
                 }
                 orderHolder = new OrderHolder(PendingOrders.this,ordersList);
