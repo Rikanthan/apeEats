@@ -1,4 +1,4 @@
-package com.example.anushka;
+package com.example.it20020880;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,11 +14,11 @@ import java.util.List;
 
 public class OrderHolder extends RecyclerView.Adapter<OrderHolder.ImageViewHolder> {
     private final Context mContext;
-    private final List<Orders> mOrders;
+    private final List<Products> mProducts;
     private static OnItemClickListener mListener;
-    public OrderHolder(Context context, List<Orders> Carts) {
+    public OrderHolder(Context context, List<Products> Carts) {
         mContext = context;
-        mOrders = Carts;
+        mProducts = Carts;
     }
     @NonNull
     @Override
@@ -32,13 +32,13 @@ public class OrderHolder extends RecyclerView.Adapter<OrderHolder.ImageViewHolde
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        Orders order = mOrders.get(position);
-        holder.orderNo.setText( order.getOrderNo());
-        holder.orderName.setText(order.getOrderName());
+        Products order = mProducts.get(position);
+        holder.orderNo.setText( order.getpID());
+        holder.orderName.setText(order.getpFoodname());
     }
     @Override
     public int getItemCount() {
-        return mOrders.size();
+        return mProducts.size();
     }
     public static class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView orderNo,orderName,orderStatus;

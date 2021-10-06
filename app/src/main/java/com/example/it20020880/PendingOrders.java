@@ -1,4 +1,4 @@
-package com.example.anushka;
+package com.example.it20020880;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,16 +16,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FinishedOrders extends AppCompatActivity implements OrderHolder.OnItemClickListener{
+public class PendingOrders extends AppCompatActivity implements OrderHolder.OnItemClickListener{
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     LinearLayoutManager linearLayoutManager;
-    List<Orders> ordersList;
+    List<Products> ordersList;
     OrderHolder orderHolder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finished_orders);
+        setContentView(R.layout.activity_pending_orders);
         recyclerView = findViewById(R.id.order_recycle);
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -33,13 +33,14 @@ public class FinishedOrders extends AppCompatActivity implements OrderHolder.OnI
         recyclerView.setHasFixedSize(true);
         ordersList = new ArrayList<>();
         retrieve();
+
     }
     public void retrieve()
     {
         ordersList.clear();
         databaseReference = FirebaseDatabase
                 .getInstance()
-                .getReference("Orders");
+                .getReference("McLJJXPnv3UNRjHyXGNZSBVe7lu2").child("Products");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull
@@ -48,15 +49,15 @@ public class FinishedOrders extends AppCompatActivity implements OrderHolder.OnI
                 {
                     if(mydata.exists())
                     {
-                        Orders orders = mydata.getValue(Orders.class);
-                        if(orders.getStatus().contains("Finished"))
-                        {
-                            ordersList.add(orders);
-                        }
+                        Products orders = mydata.getValue(Products.class);
+//                        if(orders.getpCatogory().contains("pending"))
+//                        {
+//                            ordersList.add(orders);
+//                        }
                     }
                 }
-                orderHolder = new OrderHolder(FinishedOrders.this,ordersList);
-                orderHolder.setOnItemClickListener(FinishedOrders.this);
+                orderHolder = new OrderHolder(PendingOrders.this,ordersList);
+                orderHolder.setOnItemClickListener(PendingOrders.this);
                 recyclerView.setAdapter(orderHolder);
             }
 

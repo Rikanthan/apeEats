@@ -1,4 +1,4 @@
-package com.example.anushka;
+package com.example.it20020880;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +34,8 @@ public class RestaurantOrder extends AppCompatActivity {
         resCustomerAddress = findViewById(R.id.res_customerAddress);
         foodImage = findViewById(R.id.food_image);
         orderNo = getIntent().getStringExtra("orderno");
-        reference = FirebaseDatabase.getInstance().getReference("Orders");
+        reference = FirebaseDatabase.getInstance()
+                .getReference("McLJJXPnv3UNRjHyXGNZSBVe7lu2").child("Products");
         showOrder();
     }
     public void showOrder()
@@ -47,15 +48,15 @@ public class RestaurantOrder extends AppCompatActivity {
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                 if(snapshot.exists())
                                 {
-                                    Orders orders = snapshot.getValue(Orders.class);
-                                    resOrderNo.setText(orders.getOrderNo());
-                                    resFoodName.setText(orders.getOrderName());
-                                    resCustomerName.setText(orders.getCustomerName());
-                                    resCustomerPhone.setText(orders.getCustomerPhone());
-                                    resCustomerAddress.setText(orders.getCustomerAddress());
+                                    Products products = snapshot.getValue(Products.class);
+                                    resOrderNo.setText(products.getpID());
+                                    resFoodName.setText(products.getpFoodname());
+                                    resCustomerName.setText(products.getpDeliveryAvailable());
+                                    resCustomerPhone.setText(products.getpDescription());
+                                    resCustomerAddress.setText(products.getpPrice());
                                     Picasso
                                             .get()
-                                            .load(orders.getFoodImageUrl())
+                                            .load(products.getpImage())
                                             .into(foodImage);
 
                                 }

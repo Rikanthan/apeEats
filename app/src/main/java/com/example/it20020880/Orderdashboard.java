@@ -1,4 +1,4 @@
-package com.example.anushka;
+package com.example.it20020880;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +22,8 @@ public class Orderdashboard extends AppCompatActivity implements OrderDashboardH
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     LinearLayoutManager linearLayoutManager;
-    List<Orders> ordersList;
+    List<Products> ordersList;
+    List<String> keys;
     OrderDashboardHolder orderHolder;
     String id ="";
 
@@ -36,9 +37,10 @@ public class Orderdashboard extends AppCompatActivity implements OrderDashboardH
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         ordersList = new ArrayList<>();
+        keys = new ArrayList<>();
         databaseReference = FirebaseDatabase
                 .getInstance()
-                .getReference("Orders");
+                .getReference("McLJJXPnv3UNRjHyXGNZSBVe7lu2").child("Products");
         retrieve();
     }
 
@@ -50,9 +52,13 @@ public class Orderdashboard extends AppCompatActivity implements OrderDashboardH
                 ordersList.clear();
                 for (DataSnapshot mydata : snapshot.getChildren()) {
                     if (mydata.exists()) {
-                        Orders orders = mydata.getValue(Orders.class);
+                        Products orders = mydata.getValue(Products.class);
                         ordersList.add(orders);
-                        id = orders.getOrderNo();
+                        id = mydata.getKey();
+                        if(id != null)
+                        {
+                            keys.add(id);
+                        }
                     }
                 }
                 orderHolder = new OrderDashboardHolder(ordersList,Orderdashboard.this);
@@ -73,18 +79,16 @@ public class Orderdashboard extends AppCompatActivity implements OrderDashboardH
 
     @Override
     public void showDetailsOnClick(View v, int position) {
-        Orders newOrders = ordersList.get(position);
         Intent intent = new Intent(Orderdashboard.this,RestaurantOrder.class);
-        intent.putExtra("orderno",newOrders.getOrderNo());
+        intent.putExtra("orderno",keys.get(position));
         startActivity(intent);
     }
 
     @Override
     public void deleteOnClick(View v, int position) {
-        Orders newOrders = ordersList.get(position);
-        newOrders.setStatus("pending");
+        Products newProducts = ordersList.get(position);
         ordersList.clear();
-        databaseReference.child(newOrders.getOrderNo()).removeValue();
+        databaseReference.child(keys.get(position)).removeValue();
         retrieve();
     }
 

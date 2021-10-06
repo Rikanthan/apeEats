@@ -1,6 +1,5 @@
-package com.example.anushka;
+package com.example.it20020880;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class OrderDashboardHolder extends RecyclerView.Adapter<OrderDashboardHolder.ImageViewHolder> {
 
-    private List<Orders> ordersList;
+    private List<Products> ordersList;
     public OrderDashboardHolderListener onClickListener;
 
 
@@ -35,7 +34,7 @@ public class OrderDashboardHolder extends RecyclerView.Adapter<OrderDashboardHol
 
     }
 
-    public OrderDashboardHolder(List<Orders> FollowersList, OrderDashboardHolderListener listener) {
+    public OrderDashboardHolder(List<Products> FollowersList, OrderDashboardHolderListener listener) {
         this.ordersList = FollowersList;
         this.onClickListener = listener;
 
@@ -50,8 +49,8 @@ public class OrderDashboardHolder extends RecyclerView.Adapter<OrderDashboardHol
 
     @Override
     public void onBindViewHolder(final ImageViewHolder holder, final int position) {
-        Orders order = ordersList.get(position);
-        holder.showDetails.setText("order "+order.getOrderNo());
+        Products order = ordersList.get(position);
+        holder.showDetails.setText("order "+order.getpFoodname());
         holder.showDetails.setOnClickListener(v -> {
             onClickListener.showDetailsOnClick(v,position);
         });

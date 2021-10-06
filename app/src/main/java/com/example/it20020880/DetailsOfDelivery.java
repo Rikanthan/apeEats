@@ -1,4 +1,4 @@
-package com.example.anushka;
+package com.example.it20020880;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +21,7 @@ public class DetailsOfDelivery extends AppCompatActivity {
     String orderNo = "";
     DatabaseReference reference;
     CheckBox checkBox;
-    Orders orders;
+    Products orders;
     TextView resOrderNo, resFoodName, resCustomerName,resCustomerPhone ,resCustomerAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +34,11 @@ public class DetailsOfDelivery extends AppCompatActivity {
         resCustomerAddress = findViewById(R.id.del_customerAddress);
         orderNo = getIntent().getStringExtra("orderno");
         checkBox = findViewById(R.id.checkBox);
-        orders = new Orders();
-        reference = FirebaseDatabase.getInstance().getReference("Orders");
+        orders = new Products();
+        reference = FirebaseDatabase.getInstance()
+                .getReference("McLJJXPnv3UNRjHyXGNZSBVe7lu2").child("Products");
         showDetails();
-    }
+    }//com.example.it20020880
     public void showDetails()
     {
         reference
@@ -49,12 +49,12 @@ public class DetailsOfDelivery extends AppCompatActivity {
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                 if(snapshot.exists())
                                 {
-                                    orders = snapshot.getValue(Orders.class);
-                                    resOrderNo.setText(orders.getOrderNo());
-                                    resFoodName.setText(orders.getOrderName());
-                                    resCustomerName.setText(orders.getCustomerName());
-                                    resCustomerPhone.setText(orders.getCustomerPhone());
-                                    resCustomerAddress.setText(orders.getCustomerAddress());
+                                    orders = snapshot.getValue(Products.class);
+                                    resOrderNo.setText(orders.getpID());
+                                    resFoodName.setText(orders.getpFoodname());
+                                    resCustomerName.setText(orders.getpDeliveryAvailable());
+                                    resCustomerPhone.setText(orders.getpPrice());
+                                    resCustomerAddress.setText(orders.getpDescription());
                                 }
                             }
 
@@ -70,7 +70,7 @@ public class DetailsOfDelivery extends AppCompatActivity {
     {
         if(checkBox.isChecked())
         {
-            orders.setStatus("Finished");
+            orders.setpCatogory("yes");
             reference.child(orderNo).setValue(orders);
         }
         Intent intent = new Intent(DetailsOfDelivery.this,Delivery.class);
